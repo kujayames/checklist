@@ -1,6 +1,6 @@
 services:
   web:
-    build: .
+    build: ./backend
     ports:
       - "8000:8080"
     depends_on:
@@ -15,6 +15,6 @@ services:
       POSTGRES_DB: postgres
     volumes:
       - db_data:/var/lib/postgresql/data
-      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./backend/init.sql:/docker-entrypoint-initdb.d/init.sql
 volumes:
   db_data:
