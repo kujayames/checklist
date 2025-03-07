@@ -28,3 +28,6 @@ INSERT INTO users (username, password_hash) VALUES ('admin', PASSWORD_HASH_FROM_
 ```
 
 Access the admin page at [localhost:8080/admin](http://localhost:8080/admin).
+
+# Hosting
+See the hosting instructions at [docs/HOSTING.md](./docs/HOSTING.md) for instructions on how you may host the app.
