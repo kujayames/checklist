@@ -1,4 +1,7 @@
-echo "Determining shell"
+RED='\033[0;31m'
+NC='\033[0m' # No Color
+
+echo -e "${RED}Determining shell${NC}" && sleep 1
 if echo $SHELL | grep -q 'bash'; then
     shell=~/.bashrc
 elif echo $SHELL | grep -q 'zsh'; then
@@ -9,7 +12,7 @@ else
 fi
 echo "Shell = " $SHELL
 
-echo "Determining machine architecture"
+echo -e "${RED}Determining machine architecture${NC}" && sleep 1
 if dpkg --print-architecture | grep -q 'amd64'; then
     architecture='amd64'
 elif dpkg --print-architecture | grep -q 'arm64'; then
@@ -23,7 +26,7 @@ fi
 echo "Architecture = " $architecture
 
 # Golang install
-echo "Go 1.24.1 Installation"
+echo -e "${RED}Go 1.24.1 Installation${NC}" && sleep 1
 if echo $architecture | grep -q 'amd64' ; then
     wget https://go.dev/dl/go1.24.1.linux-amd64.tar.gz
     tar -C /usr/local -xzf go1.24.1.linux-amd64.tar.gz
@@ -39,6 +42,7 @@ echo "Confirm go installation"
 go version
 
 # NVM install
+echo -e "${RED}Installing NVM${NC}" && sleep 1
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
 
 export NVM_DIR="$HOME/.nvm"
@@ -46,10 +50,10 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 source $shell
-echo "Confirm NVM installation"
+echo -e "${RED}Confirm NVM installation${NC}" && sleep 1
 nvm -v
 
 # NPM install
 nvm install 18
-echo "Confirm NPM version"
+echo -e "${RED}Confirm NPM version${NC}" && sleep 1
 node --version
