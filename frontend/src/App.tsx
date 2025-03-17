@@ -9,20 +9,19 @@ function App() {
   useEffect(() => {
     if (isAuthenticated) {
       authFetch("/api")
-        .then((res) => {
+        .then((res: Response) => {
           if (!res.ok) throw new Error(`HTTP error! Status: ${res.status}`)
           return res.json()
         })
-        .then((data) => setCount(data.count))
-        .then(data => setCount(data.count))
-                .catch(err => {
-                  console.error("Failed to fetch count:", err)
-                  if (err.message === 'Session expired') {
-                    logout()
-                  }
-                })
-            }
-  }, [isAuthenticated])
+        .then((data: { count: number }) => setCount(data.count))
+        .catch((err: Error) => {
+          console.error("Failed to fetch count:", err)
+          if (err.message === 'Session expired') {
+            logout()
+          }
+        })
+    }
+  }, [isAuthenticated, authFetch, logout])
 
   if (!isAuthenticated) {
     return <Login />
