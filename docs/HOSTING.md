@@ -1,4 +1,4 @@
-You can host the app by building the backend and the frontend and tying them to gether with Nginx.
+You can host the app by building the backend and the frontend and tying them together with Nginx.
 
 1. Build the backend
 ```bash
@@ -14,7 +14,7 @@ cd frontend
 npm run build
 ```
 
-3. Create an Nginx configuration file (`/etc/nginx/sites-available/checlist.conf`):
+3. Create an Nginx configuration file (`/etc/nginx/sites-available/checklist.conf`):
 ```conf
 server {
     listen 80;
